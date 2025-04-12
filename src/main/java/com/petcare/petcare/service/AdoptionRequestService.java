@@ -26,4 +26,13 @@ public class AdoptionRequestService{
         return adoptionRequestRepository.findById(id);
     }
 
+    public boolean deleteAdoptionRequest(Long id){
+        Optional<AdoptionRequest> adoptionRequest = adoptionRequestRepository.findById(id);
+        if (adoptionRequest.isPresent()){
+            adoptionRequestRepository.delete(adoptionRequest.get());
+            return true;
+        }
+        return false;
+    }
+
 }

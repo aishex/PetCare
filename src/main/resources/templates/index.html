@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetCare</title>
+  <link rel="stylesheet" href="/index_styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <span>PetCare</span>
+        </div>
+        <div class="menu">
+        <button class="add-pet-btn">Add pet</button>
+          <a href="#" class="active">Main Page</a>
+          <a href="#">About us</a>
+          <a href="#">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Pets for adoption</h1>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="dog">Dogs</button>
+      <button class="filter-btn" data-filter="cat">Cats</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+
+    <div class="add-pet-form" style="display: none;">
+      <form class="pet-form">
+          <label>Name: <input type="text" name="name" required></label><br>
+          <label>Age: <input type="number" name="age" required></label><br>
+          <label>Species: <input type="text" name="species" placeholder="cat, dog" required></label><br>
+          <label>Breed: <input type="text" name="breed" placeholder="ragdoll, labrador" required></label><br>
+          <label>Gender: <input type="text" name="gender" placeholder="male, female" required></label><br>
+          <label>Size: <input type="text" name="size" placeholder="small, medium, large" required></label><br>
+          <label>Description:<br><textarea name="description" required></textarea></label><br>
+          <label>Image URL: <input type="text" name="imageUrl" required></label><br>
+          <button type="submit" class="submit-btn">Add</button>
+        </form>
+      </div>
+
+      <div class="animals-grid" id="animals-container">
+      </div>
+      
+      <script src="/script.js"></script>
+  </main>
+</body>
+</html>

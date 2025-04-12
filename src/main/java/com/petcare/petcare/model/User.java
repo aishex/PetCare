@@ -2,13 +2,9 @@ package com.petcare.petcare.model;
 
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
-public class User{
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +20,12 @@ public class User{
 
     @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String password;
-    private String role; //admin, user
+
+    @Column(nullable = false)
+    private String role; // admin, user
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -33,6 +33,24 @@ public class User{
     @OneToMany(mappedBy = "user")
     private List<AdoptionRequest> adoptionRequests;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Pet> pets;
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
